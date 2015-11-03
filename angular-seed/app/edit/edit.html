@@ -1,0 +1,48 @@
+
+<h4>User: {{user.name}}</h4>
+
+<table class="table table-bordered table-hover table-condensed">
+    <tr style="font-weight: bold">
+      <td style="width:20%">Title</td>
+      <td style="width:35%">Link</td>
+      <td style="width:20%">Image URL</td>
+      <td style="width:25%">Edit</td>
+    </tr>
+    <tr ng-repeat="bm in bookmarks">
+      <td>
+        
+        <span editable-text="bm.alt" e-name="title" e-form="rowform" e-required>
+          {{ bm.alt || 'empty' }}
+        </span>
+      </td>
+      <td>
+        <!-- editable status (select-local) -->
+        <span editable-text="bm.url" e-name="link" e-form="rowform" e-required>
+          {{ bm.url || 'empty' }}
+        </span>
+      </td>
+      <td>
+        <!-- editable group (select-remote) -->
+        <span editable-text="bm.imgsrc" e-name="imgsrc" e-form="rowform" >
+          
+        </span>
+      </td>
+      <td style="white-space: nowrap">
+        <!-- form -->
+        <form editable-form name="rowform" onbeforesave="saveBookmark($data, bm.alt)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == bm">
+          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+            save
+          </button>
+          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+            cancel
+          </button>
+        </form>
+        <div class="buttons" ng-show="!rowform.$visible">
+          <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+          <button class="btn btn-danger" ng-click="removeBookmark($index)">del</button>
+        </div>  
+      </td>
+    </tr>
+  </table>
+  <button class="btn btn-default" ng-click="addBookmark()">Add Bookmark</button>
+  <button class="btn btn-default" ng-click="testSave()">Test</button>

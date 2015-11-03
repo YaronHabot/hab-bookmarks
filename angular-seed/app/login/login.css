@@ -1,0 +1,23 @@
+.login-prompt {
+  float:left;
+  width: 80px;
+}
+
+.login-input {
+  float:left;
+  width: 80px;
+}
+.login-button {
+  float:left;
+  width: 80px;
+}
+
+/*
+input
+{
+  -moz-border-radius: 5px;
+ border-radius: 5px;
+    border:solid 1px black;
+    padding:5px;
+}
+*/

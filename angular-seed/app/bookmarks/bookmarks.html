@@ -1,0 +1,18 @@
+<h4>User: {{user.name}}</h4>
+
+<div class="bookmarks" ng-repeat="bm in bookmarks">
+    <a 
+        ng-href="{{bm.url}}"
+        target="_blank"
+    >
+        <img 
+            src="{{bm.imgsrc}}"
+            alt="{{bm.alt}}"
+        >
+        <div class="title">{{bm.alt}}</div>
+    </a>
+    <!--<span>{{bm.alt}}</span>-->
+</div>
+<div style="clear:both"></div>
+<div>{{databaseMessage}}</div>
+
